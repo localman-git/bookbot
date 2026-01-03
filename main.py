@@ -1,3 +1,5 @@
+import sys
+
 from stats import count_book_words, count_letter_appearances, sorted_letter_dictionaries
 
 def get_book_text(filepath):
@@ -7,7 +9,11 @@ def get_book_text(filepath):
 
 def main():
 
-    book_filepath = './books/frankenstein.txt'
+    if len(sys.argv) != 2:
+        print(f'Usage: python3 main.py <path_to_book>')
+        sys.exit(1)
+
+    book_filepath = sys.argv[1]
     book_text = get_book_text(book_filepath)
 
     character_count = count_letter_appearances(book_text)
